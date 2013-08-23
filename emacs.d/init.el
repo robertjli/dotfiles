@@ -11,7 +11,7 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
-;; Coler theme
+;; Color theme
 (add-to-list 'load-path "~/.emacs.d/packages/color-theme/")
 (require 'color-theme)
 (color-theme-initialize)
@@ -20,6 +20,8 @@
 ;; Move backups to .emacs.d
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 
+;; Bind auto indentation to RET
+(define-key (current-global-map) (kbd "RET") 'newline-and-indent)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
