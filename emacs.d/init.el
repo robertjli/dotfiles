@@ -20,8 +20,8 @@
 ;; Move backups to .emacs.d
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 
-;; Bind auto indentation to RET
-(define-key (current-global-map) (kbd "RET") 'newline-and-indent)
+;; Bind auto-indentation to RET
+(define-key (current-global-map) (kbd "RET") 'reindent-then-newline-and-indent)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
