@@ -1,0 +1,9 @@
+[user]
+	email = li.robertj+git@gmail.com
+	name = Robert Li
+[core]
+	editor = emacs -nw
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=7200
