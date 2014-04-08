@@ -11,6 +11,23 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+;; Highlight closing braces
+(show-paren-mode 1)
+
+;; Bind backspace to C-h
+(global-set-key (kbd "C-?") 'help-command)
+(global-set-key (kbd "M-?") 'mark-paragraph)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
+
+;; Remove scratch message
+(setq initial-scratch-message "")
+
+;; Remove toolbars
+(setq initial-frame-alist
+      '((menu-bar-lines . 0)
+        (tool-bar-lines . 0)))
+
 ;; Color theme
 (add-to-list 'load-path "~/.emacs.d/packages/color-theme/")
 (require 'color-theme)
