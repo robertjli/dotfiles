@@ -11,6 +11,8 @@ for file in *; do
         if [ "$file" != 'install.sh' ] && [ "$file" != 'README.md' ]; then
             echo "Creating $target"
             ln -s "$PWD/$file" "$target"
+        else
+            echo "Skipping $file"
         fi
     fi
 done
