@@ -43,7 +43,11 @@
 (add-hook 'ruby-mode-hook
   (lambda () (define-key ruby-mode-map (kbd "RET")
     'reindent-then-newline-and-indent)))
-
+    
+;; Find corresponding files
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
