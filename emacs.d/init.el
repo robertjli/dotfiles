@@ -49,6 +49,10 @@
   (lambda()
     (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
+;; Revert buffer
+(global-set-key (kbd "C-c r") 'revert-buffer)
+
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
