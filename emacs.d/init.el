@@ -51,7 +51,10 @@
 
 ;; Revert buffer
 (global-set-key (kbd "C-c r") 'revert-buffer)
+(setq revert-without-query '(".*"))
 
+;; Subword boundaries
+(global-subword-mode 1)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
