@@ -1,3 +1,23 @@
+;;;;; Google ;;;;;
+
+(require 'google)
+(require 'google3)
+(require 'google-imports)
+
+;; Build using Blaze
+(require 'google3-build)
+(setq google-build-system "blaze")
+
+;; Grok
+(grok-init)
+
+;; Find File At Point
+(require 'google3-ffap)
+
+;;;;; End Google ;;;;;
+
+
+
 ;; When in windowed mode
 (when (display-graphic-p)
   ;; Set font
@@ -50,6 +70,7 @@
     (local-set-key (kbd "C-c o") 'ff-find-other-file)))
 
 ;; Revert buffer
+(global-auto-revert-mode 1)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (setq revert-without-query '(".*"))
 
