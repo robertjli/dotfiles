@@ -1,5 +1,12 @@
 ;;;;; Google ;;;;;
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (require 'google)
 (require 'google3)
 (require 'google-imports)
@@ -56,6 +63,7 @@
 
 ;; Move backups to .emacs.d
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
+(setq auto-save-file-name-transforms `(("." . "~/.emacs.d/backups" t)))
 
 ;; Bind auto-indentation to RET
 (define-key (current-global-map) (kbd "RET") 'reindent-then-newline-and-indent)
