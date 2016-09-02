@@ -36,7 +36,6 @@
 
 ;; Move backups to .emacs.d
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms `(("." . "~/.emacs.d/backups" t)))
 
 ;; Bind auto-indentation to RET
 (define-key (current-global-map) (kbd "RET") 'reindent-then-newline-and-indent)
