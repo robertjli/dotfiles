@@ -1,1 +1,1 @@
-gristory='history|grep'
+alias gristory='history|grep'
