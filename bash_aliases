@@ -1,0 +1,1 @@
+gristory='history|grep'
