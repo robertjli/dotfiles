@@ -1,7 +1,7 @@
 ;; When in windowed mode
 (when (display-graphic-p)
   ;; Set font
-  (set-face-attribute 'default nil :font "Inconsolata-dz-11")
+  (set-face-attribute 'default nil :font "Inconsolata-12")
 )
 
 ;; Turn off tabs
