@@ -60,6 +60,9 @@
 ;; Yank Pop Reverse
 (global-set-key (kbd "M-Y") (lambda () (interactive) (yank-pop -1)))
 
+;; Default window split behavior
+(setq split-width-threshold 80)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
