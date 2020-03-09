@@ -52,7 +52,7 @@
 (add-hook 'ruby-mode-hook
   (lambda () (define-key ruby-mode-map (kbd "RET")
     'reindent-then-newline-and-indent)))
-    
+
 ;; Revert buffer
 (global-auto-revert-mode 1)
 (global-set-key (kbd "C-c r") 'revert-buffer)
@@ -72,3 +72,6 @@
 
 ;; Inhibit startup screen
 (setq inhibit-startup-screen t)
+
+;; Delete trailing whitespace on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
