@@ -46,13 +46,6 @@
 ;; Move backups to .emacs.d
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 
-;; Bind auto-indentation to RET
-(define-key (current-global-map) (kbd "RET") 'reindent-then-newline-and-indent)
-;; And for ruby-mode
-(add-hook 'ruby-mode-hook
-  (lambda () (define-key ruby-mode-map (kbd "RET")
-    'reindent-then-newline-and-indent)))
-
 ;; Revert buffer
 (global-auto-revert-mode 1)
 (global-set-key (kbd "C-c r") 'revert-buffer)
