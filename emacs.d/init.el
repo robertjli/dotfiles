@@ -53,11 +53,6 @@
   (lambda () (define-key ruby-mode-map (kbd "RET")
     'reindent-then-newline-and-indent)))
     
-;; Find corresponding files
-(add-hook 'c-mode-common-hook
-  (lambda()
-    (local-set-key (kbd "C-c o") 'ff-find-other-file)))
-
 ;; Revert buffer
 (global-auto-revert-mode 1)
 (global-set-key (kbd "C-c r") 'revert-buffer)
