@@ -7,6 +7,15 @@
 ;; Turn off tabs
 (setq-default indent-tabs-mode nil)
 
+;; Frame size
+(add-to-list 'default-frame-alist '(width . 100))
+(add-to-list 'default-frame-alist '(height . 60))
+(add-hook 'emacs-startup-hook
+  (lambda ()
+    (when (and (display-graphic-p)
+               (> (length (window-list)) 1))
+          (add-to-list 'initial-frame-alist '(width . 205)))))
+
 ;; Show line and column numbers
 (line-number-mode 1)
 (column-number-mode 1)
