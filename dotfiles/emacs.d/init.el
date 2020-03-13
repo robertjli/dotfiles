@@ -1,8 +1,9 @@
 ;; When in windowed mode
 (when (display-graphic-p)
   ;; Set font
-  (set-face-attribute 'default nil :font "Inconsolata-12")
-)
+  (when (eq system-type 'darwin)
+    (set-face-attribute 'default nil :family "Inconsolata")
+    (set-face-attribute 'default nil :height 160)))
 
 ;; Turn off tabs
 (setq-default indent-tabs-mode nil)
