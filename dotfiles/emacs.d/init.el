@@ -59,7 +59,7 @@
 (global-set-key (kbd "M-Y") (lambda () (interactive) (yank-pop -1)))
 
 ;; Default window split behavior
-(setq split-width-threshold 80) ;; If the width of the frame is >= 80, split vertically
+(setq split-width-threshold 80) ;; If frame width >= 80, split vertically
 
 ;; Inhibit buffer list when opening multiple files
 (setq inhibit-startup-buffer-menu t)
