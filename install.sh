@@ -7,6 +7,7 @@ main () {
         return 1
     fi
 
+    install_shell_files
     install_dotfiles
     install_fonts
 }
@@ -30,14 +31,44 @@ link () {
     fi
 }
 
-install_dotfiles () {
-    cd dotfiles
+install_shell_files () {
+    if [[ "$SHELL" == *"zsh"* ]]; then
+        install_zsh_files
+    elif [[ "$SHELL" == *"bash"* ]]; then
+        install_bash_files
+    else
+        printf "WARNING: unrecognized \$SHELL $SHELL, skipping shell-specific files\n"
+    fi
+}
+
+install_zsh_files () {
+    pushd zsh
 
     for file in *; do
         link "$PWD/$file" "$HOME/.$file"
     done
 
-    cd ..
+    popd
+}
+
+install_bash_files () {
+    pushd bash
+
+    for file in *; do
+        link "$PWD/$file" "$HOME/.$file"
+    done
+
+    popd
+}
+
+install_dotfiles () {
+    pushd dotfiles
+
+    for file in *; do
+        link "$PWD/$file" "$HOME/.$file"
+    done
+
+    popd
 }
 
 install_fonts () {

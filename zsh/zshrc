@@ -1,0 +1,12 @@
+fpath=(~/.zfunc $fpath)
+
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zfunc/git-completion.bash
+autoload -Uz compinit && compinit
+
+# Set command prompt
+autoload -U colors && colors
+export PS1="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[magenta]%}%m%{$reset_color%} %1~ %{$fg[green]%}%#%{$reset_color%} "
+
+# Add SSH keys
+ssh-add -K
