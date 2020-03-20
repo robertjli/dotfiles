@@ -1,6 +1,7 @@
 #!/bin/bash
 
 main () {
+    printf "Hello!\n"
     check_pwd
     if [[ "$?" == 1 ]]; then
         printf "ERROR: run ./install.sh from the root of the repo\n"
@@ -10,6 +11,8 @@ main () {
     install_shell_files
     install_dotfiles
     install_fonts
+
+    printf "Goodbye!\n"
 }
 
 check_pwd () {
@@ -24,7 +27,7 @@ link () {
 
     if [[ -e "$dest" ]]; then
         if [[ ! -L "$dest" ]]; then
-            printf "WARNING: $dest exists but is not a symlink!\n"
+            printf "WARNING: $dest exists but is not a symlink! Skipping...\n"
         fi
     else
         ln -s "$src" "$dest"
@@ -37,11 +40,12 @@ install_shell_files () {
     elif [[ "$SHELL" == *"bash"* ]]; then
         install_bash_files
     else
-        printf "WARNING: unrecognized \$SHELL $SHELL, skipping shell-specific files\n"
+        printf "WARNING: unrecognized \$SHELL $SHELL! Skipping shell-specific files\n"
     fi
 }
 
 install_zsh_files () {
+    printf "zsh shell found, installing zsh-specific files\n"
     pushd zsh
 
     for file in *; do
@@ -52,6 +56,7 @@ install_zsh_files () {
 }
 
 install_bash_files () {
+    printf "bash shell found, installing bash-specific files\n"
     pushd bash
 
     for file in *; do
@@ -62,6 +67,7 @@ install_bash_files () {
 }
 
 install_dotfiles () {
+    printf "Installing general dotfiles\n"
     pushd dotfiles
 
     for file in *; do
@@ -73,19 +79,21 @@ install_dotfiles () {
 
 install_fonts () {
     if [[ ! -d "fonts" ]]; then
-        printf "WARNING: fonts directory missing!\n"
+        printf "WARNING: fonts directory missing! Skipping fonts\n"
         return 1
     fi
 
     if [[ "$OSTYPE" == "darwin"* ]]; then
         install_fonts_osx
     else
-        printf "WARNING: unrecognized \$OSTYPE $OSTYPE, skipping fonts\n"
+        printf "WARNING: unrecognized \$OSTYPE $OSTYPE! Skipping fonts\n"
     fi
 }
 
 install_fonts_osx () {
-    cp -R fonts/* "$HOME"/Library/Fonts
+    local dest="$HOME/Library/Fonts"
+    printf "OS X found, installing fonts to $dest\n"
+    cp -R fonts/* "$dest"
 }
 
 main "$@"
