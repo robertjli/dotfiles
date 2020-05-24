@@ -35,13 +35,26 @@ link () {
 }
 
 install_shell_files () {
-    if [[ "$SHELL" == *"zsh"* ]]; then
+    if [[ "$OSTYPE" == "msys" ]]; then
+	install_windows_shell_files
+    elif [[ "$SHELL" == *"zsh"* ]]; then
         install_zsh_files
     elif [[ "$SHELL" == *"bash"* ]]; then
         install_bash_files
     else
         printf "WARNING: unrecognized \$SHELL $SHELL! Skipping shell-specific files\n"
     fi
+}
+
+install_windows_shell_files () {
+    printf "Windows found, installing git for windows files\n"
+
+    printf "Where is runemacs.exe?\n"
+    printf "(Note: format should be /d/Program Files/emacs.../bin/runemacs.exe)\n"
+    printf "> "
+    read RUNEMACS
+    RUNEMACS="${RUNEMACS/ /\\ }"
+    echo 'alias emacs="'"$RUNEMACS"'"' > "$HOME/.bash_profile"
 }
 
 install_zsh_files () {
