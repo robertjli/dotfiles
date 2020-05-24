@@ -47,7 +47,7 @@ install_shell_files () {
 }
 
 install_windows_shell_files () {
-    printf "Windows found, installing git for windows files\n"
+    printf "Windows found, installing Git Bash files\n"
 
     printf "Where is runemacs.exe?\n"
     printf "(Note: format should be /d/Program Files/emacs.../bin/runemacs.exe)\n"
@@ -98,6 +98,8 @@ install_fonts () {
 
     if [[ "$OSTYPE" == "darwin"* ]]; then
         install_fonts_osx
+    elif [[ "$OSTYPE" == "msys" ]]; then
+	install_fonts_windows
     else
         printf "WARNING: unrecognized \$OSTYPE $OSTYPE! Skipping fonts\n"
     fi
@@ -107,6 +109,11 @@ install_fonts_osx () {
     local dest="$HOME/Library/Fonts"
     printf "OS X found, installing fonts to $dest\n"
     cp -R fonts/* "$dest"
+}
+
+install_fonts_windows () {
+    printf "Unable to install fonts in Windows\n"
+    printf "Open System Settings > Font Settings and install fonts manually\n"
 }
 
 main "$@"

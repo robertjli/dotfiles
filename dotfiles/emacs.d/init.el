@@ -2,8 +2,15 @@
 (when (display-graphic-p)
   ;; Set font
   (when (eq system-type 'darwin)
-    (set-face-attribute 'default nil :family "Inconsolata")
-    (set-face-attribute 'default nil :height 160)))
+    (set-face-attribute 'default nil
+                        :family "Inconsolata"
+                        :height 160))
+  (when (eq system-type 'windows-nt)
+    (set-face-attribute 'default nil
+                        :family "Inconsolata"
+                        :height 110
+                        :weight 'normal
+                        :width 'normal)))
 
 ;; Turn off tabs
 (setq-default indent-tabs-mode nil)
@@ -11,6 +18,8 @@
 ;; Frame size
 (add-to-list 'default-frame-alist '(width . 100))
 (add-to-list 'default-frame-alist '(height . 60))
+(when (eq system-type 'windows-nt)
+  (add-to-list 'default-frame-alist '(height . 40)))
 (add-hook 'emacs-startup-hook
   (lambda ()
     (when (and (display-graphic-p)
